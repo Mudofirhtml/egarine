@@ -1,21 +1,26 @@
 on:
   push:
-    branches: [ main ]
-name: Deploy website on push
+    branches:
+      - main
+name: 🚀 Deploy website on push
 jobs:
   web-deploy:
-    name: Auto Deploy
+    name: 🧑‍💻 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v2.3.2
+      - name: 📨 Get latest code
+        uses: actions/checkout@v3
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server : ${{ secrets.FTP_SERVER }}
-        username : ${{ secrets.FTP_USER }}
-        password : ${{ secrets.FTP_PASS }}
-        protocol : ftp
-        port : ${{ secrets.PORT }}
-        exclude : .git*
+      - name: 🗃️ Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          port: ${{ secrets.PORT }}
+          server-dir: htdocs
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          exclude: .env*
+            - .git*
+            - .git*/**
+            - photos/*
+            - assets/images/profile/*
