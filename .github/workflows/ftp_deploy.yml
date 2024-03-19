@@ -16,7 +16,7 @@ jobs:
         with:
           server: ${{ secrets.FTP_SERVER }}
           port: ${{ secrets.PORT }}
-          server-dir: htdocs
+          server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           exclude: .env*
